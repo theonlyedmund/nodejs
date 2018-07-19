@@ -31,7 +31,8 @@ app.get('/echo', function (req, res) {
 
 app.post('/echo', function (req, res) {
  
-    var message = req.body.message || 'Hello World!';
+    var message = req.body.message.data || 'Hello World!';
+    console.log('pubsub message: ' + message);
     res.send('echoing ' + message);
   
 });
