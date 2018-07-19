@@ -31,7 +31,7 @@ app.get('/echo', function (req, res) {
 
 app.post('/echo', function (req, res) {
  
-    var message = req.body || 'Hello World!';
+    var message = req.body.message || 'Hello World!';
     res.send('echoing ' + message);
   
 });
