@@ -24,7 +24,7 @@ app.get('/', function (req, res) {
 
 app.get('/echo', function (req, res) {
  
-    var message = req.body || 'Hello World!';
+    var message = req.body.message || 'Hello World!';
     res.send('echoing ' + message);
   
 });
