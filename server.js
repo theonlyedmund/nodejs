@@ -7,6 +7,7 @@ Object.assign=require('object-assign')
 
 app.engine('html', require('ejs').renderFile);
 app.use(morgan('combined'))
+app.use(express.bodyParser());
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
@@ -21,8 +22,15 @@ app.get('/', function (req, res) {
 
 app.get('/echo', function (req, res) {
  
-    var message = req.query.message || req.body.message || 'Hello World!';
-    res.send('helloword !!');
+    var message = req.body || 'Hello World!';
+    res.send('echoing ' + message);
+  
+});
+
+app.post('/echo', function (req, res) {
+ 
+    var message = req.body || 'Hello World!';
+    res.send('echoing ' + message);
   
 });
 
